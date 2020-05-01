@@ -13,8 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ImageSingleActivity" android:theme="@style/AppTheme.Black"></activity>
         <activity
-            android:name=".ImageActivity"
-            android:theme="@style/AppTheme.White">
+            android:name=".ImageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

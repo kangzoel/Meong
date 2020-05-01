@@ -8,7 +8,9 @@
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="match_parent"
+        android:background="#ff0000"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/cat" />
+        android:src="@mipmap/cat"
+        android:adjustViewBounds="true"/>
 
 </RelativeLayout>

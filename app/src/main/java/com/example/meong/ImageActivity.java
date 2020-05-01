@@ -9,18 +9,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.meong.adapters.ImageAdapter;
 import com.example.meong.interfaces.ImageAPIInterface;
 import com.example.meong.models.Image;
 import com.example.meong.models.ImageResult;
+import com.example.meong.others.GridSpacingItemDecoration;
 
 import java.util.ArrayList;
 
@@ -47,22 +50,18 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_image);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        actionBar.setTitle("Gambar Meong");
 
         recyclerInit();
         listenerInit(); // Wajib ada di activity yg ada menu bawahnya
-        logoIntent();
+        addAttribution();
     }
 
-    private void logoIntent() {
-        ImageView pexelsLogo = findViewById(R.id.pexels_logo);
-        pexelsLogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, (Uri) Uri.parse("https://www.pexels.com/"));
-                startActivity(intent);
-            }
-        });
+    private void addAttribution() {
+        TextView attributionText = findViewById(R.id.attribution_text);
+        String text = "Gambar disediakan oleh <a href='https://pexels.com' style='color:#D81B60'>Pexels.com</a>";
+        attributionText.setText(Html.fromHtml(text));
+        attributionText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override
@@ -100,6 +99,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, 30, false));
         fetchImages();
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

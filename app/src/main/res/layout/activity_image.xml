@@ -6,40 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ImageActivity"
-    android:background="@android:color/black">
+    tools:context=".ImageActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/image_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#000"
+        android:background="#e0e0e0"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/navigation_bar"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/attribution"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:itemCount="2"
+        app:spanCount="2"
+        android:orientation="vertical"
         tools:listitem="@layout/layout_image_list_item"></androidx.recyclerview.widget.RecyclerView>
-
-    <ImageView
-        android:id="@+id/pexels_logo"
-        android:layout_width="128dp"
-        android:layout_height="52dp"
-        android:layout_margin="16dp"
-        android:background="@color/transparent"
-        android:src="@mipmap/pexels_white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/navigation_bar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:cardElevation="4dp"
-        app:cardBackgroundColor="#000"
+        app:cardBackgroundColor="#efefef"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -87,7 +75,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="34dp"
-                    app:srcCompat="@mipmap/article_icon" />
+                    app:srcCompat="@mipmap/article_icon_inactive" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -111,7 +99,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="match_parent"
                     android:layout_height="34dp"
-                    app:srcCompat="@mipmap/hospital_icon" />
+                    app:srcCompat="@mipmap/hospital_icon_inactive" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -139,5 +127,25 @@
         android:background="@color/transparent"
         android:visibility="gone"
         android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/attribution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/navigation_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="12dp"
+        android:background="#333">
+
+        <TextView
+            android:id="@+id/attribution_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:background="@color/transparent"
+            tools:text="Atribusi di sini"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
